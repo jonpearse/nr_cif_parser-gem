@@ -22,6 +22,7 @@ require 'nr_cif_parser/record/field_types'
 require 'nr_cif_parser/record/mixins/running_days'
 
 # Different record types
+require 'nr_cif_parser/record/header'
 require 'nr_cif_parser/record/basic_schedule'
 require 'nr_cif_parser/record/origin_location'
 require 'nr_cif_parser/record/intermediate_location'
@@ -31,3 +32,4 @@ require 'nr_cif_parser/record/association'
 require 'nr_cif_parser/record/tiploc_insert'
 require 'nr_cif_parser/record/tiploc_amend'
 require 'nr_cif_parser/record/tiploc_delete'
+require 'nr_cif_parser/record/trailer'

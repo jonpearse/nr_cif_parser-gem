@@ -69,7 +69,9 @@ module NrCifParser::Record::FieldTypes
 
   class Date < Base
 
-    def initialize
+    def initialize( parse_format = '%y%m%d' )
+
+      @parse_format = parse_format
 
       super( 6, false )
 
@@ -77,7 +79,7 @@ module NrCifParser::Record::FieldTypes
 
     def parse( value )
 
-      ::Date.strptime( value, '%y%m%d' )
+      ::Date.strptime( value, @parse_format )
 
     rescue
 
