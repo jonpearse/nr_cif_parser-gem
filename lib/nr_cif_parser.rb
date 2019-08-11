@@ -10,15 +10,21 @@ module NrCifParser
 
   class RecordParserError < StandardError; end
 
-  module Record; end
+  module FieldTypes; end
+
+  module Record;
+
+    FT = NrCifParser::FieldTypes
+
+  end
 
 end
 
 require 'nr_cif_parser/parser'
 
 # record stuff
-require 'nr_cif_parser/record/base'
-require 'nr_cif_parser/record/field_types'
+require 'nr_cif_parser/base_record'
+require 'nr_cif_parser/field_types'
 require 'nr_cif_parser/record/mixins/running_days'
 
 # Different record types

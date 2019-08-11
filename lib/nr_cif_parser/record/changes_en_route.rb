@@ -12,26 +12,26 @@ module NrCifParser::Record
 
     def self.definition
       {
-        location:         FieldTypes::String.new( 7 ),
-        location_suffix:  FieldTypes::Char.new( true ),
-        category:         FieldTypes::String.new( 2 ), # @TODO: expand to ENUM
-        identity:         FieldTypes::String.new( 4, false, /\d[A-Z]\d\d/ ),
-        headcode:         FieldTypes::Number.new( 4, true ),
-        indicator:        FieldTypes::Unused.new( 1 ),
-        service_code:     FieldTypes::Number.new( 8, false, true ),
-        portion_id:       FieldTypes::Char.new( true, /[ Z1248]/ ),
-        power_type:       FieldTypes::Enum.new( %w{ D DEM DMU E ED EML EMU HST }),
-        timing_load:      FieldTypes::String.new( 4, true, /\A(A|E|N|S|T|V|X|D[1-3]|\d{1,4})\s*\Z/ ),
-        speed:            FieldTypes::Number.new( 3, false, true ),
-        op_character:     FieldTypes::String.new( 6, true, /\A[BCDEGMPQRSYZ]*\s*\Z/ ),
-        seating_class:    FieldTypes::Enum.new( %w{ B S }, true ),
-        sleepers:         FieldTypes::Enum.new( %w{ B F S }, true ),
-        reservations:     FieldTypes::Enum.new( %w{ A E R S }, true ),
-        connection:       FieldTypes::Unused.new( 1 ),
-        catering_code:    FieldTypes::String.new( 4, true, /\A[CFHMRT]*\s*\Z/ ),
-        service_brand:    FieldTypes::String.new( 4, true, /\AE?\s*\Z/ ),
-        traction_class:   FieldTypes::Unused.new( 4 ),
-        uic_code:         FieldTypes::Number.new( 5, true )
+        location:         FT::String.new( 7 ),
+        location_suffix:  FT::Char.new( true ),
+        category:         FT::String.new( 2 ), # @TODO: expand to ENUM
+        identity:         FT::String.new( 4, false, /\d[A-Z]\d\d/ ),
+        headcode:         FT::Number.new( 4, true ),
+        indicator:        FT::Unused.new( 1 ),
+        service_code:     FT::Number.new( 8, false, true ),
+        portion_id:       FT::Char.new( true, /[ Z1248]/ ),
+        power_type:       FT::Enum.new( %w{ D DEM DMU E ED EML EMU HST }),
+        timing_load:      FT::String.new( 4, true, /\A(A|E|N|S|T|V|X|D[1-3]|\d{1,4})\s*\Z/ ),
+        speed:            FT::Number.new( 3, false, true ),
+        op_character:     FT::String.new( 6, true, /\A[BCDEGMPQRSYZ]*\s*\Z/ ),
+        seating_class:    FT::Enum.new( %w{ B S }, true ),
+        sleepers:         FT::Enum.new( %w{ B F S }, true ),
+        reservations:     FT::Enum.new( %w{ A E R S }, true ),
+        connection:       FT::Unused.new( 1 ),
+        catering_code:    FT::String.new( 4, true, /\A[CFHMRT]*\s*\Z/ ),
+        service_brand:    FT::String.new( 4, true, /\AE?\s*\Z/ ),
+        traction_class:   FT::Unused.new( 4 ),
+        uic_code:         FT::Number.new( 5, true )
       }
     end
 

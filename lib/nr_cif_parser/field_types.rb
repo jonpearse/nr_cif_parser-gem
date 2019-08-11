@@ -1,6 +1,6 @@
 require 'date'
 
-module NrCifParser::Record::FieldTypes
+module NrCifParser::FieldTypes
 
   class Base
 

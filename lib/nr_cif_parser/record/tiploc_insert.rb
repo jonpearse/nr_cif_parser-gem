@@ -12,15 +12,15 @@ module NrCifParser::Record
 
     def self.definition
       {
-        tiploc:           FieldTypes::String.new( 7 ),
-        capitals_id:      FieldTypes::Number.new( 2, false, true ),
-        nalco:            FieldTypes::Number.new( 6, false, true ),
-        nlc_check_num:    FieldTypes::Char.new( true ),
-        tps_description:  FieldTypes::String.new( 26, true ),
-        stanox:           FieldTypes::Number.new( 5, false, true ),
-        po_mcp_code:      FieldTypes::Number.new( 4, false, true ),
-        crs_code:         FieldTypes::String.new( 3, true ),
-        description:      FieldTypes::String.new( 16, true )
+        tiploc:           FT::String.new( 7 ),
+        capitals_id:      FT::Number.new( 2, false, true ),
+        nalco:            FT::Number.new( 6, false, true ),
+        nlc_check_num:    FT::Char.new( true ),
+        tps_description:  FT::String.new( 26, true ),
+        stanox:           FT::Number.new( 5, false, true ),
+        po_mcp_code:      FT::Number.new( 4, false, true ),
+        crs_code:         FT::String.new( 3, true ),
+        description:      FT::String.new( 16, true )
       }
     end
 

@@ -29,7 +29,7 @@ module NrCifParser::Record
         # push back
         begin
 
-          fields[key] = field_type.parse( value ) unless field_type.class == NrCifParser::Record::FieldTypes::Unused
+          fields[key] = field_type.parse( value ) unless field_type.class == NrCifParser::FieldTypes::Unused
 
         rescue NrCifParser::RecordParserError => e
 

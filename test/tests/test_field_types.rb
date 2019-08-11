@@ -14,7 +14,7 @@ class TestFieldTypes < MiniTest::Test
 
   def test_string_types
 
-    field = NrCifParser::Record::FieldTypes::String
+    field = NrCifParser::FieldTypes::String
 
     assert_equal "Hello World", field.new( 16 ).parse( 'Hello World     ' )
     assert_nil field.new( 16, true ).parse( '       ' )
@@ -27,7 +27,7 @@ class TestFieldTypes < MiniTest::Test
 
   def test_char_types
 
-    field = NrCifParser::Record::FieldTypes::Char
+    field = NrCifParser::FieldTypes::Char
 
     assert_equal 'X', field.new.parse( 'X' )
     assert_nil field.new( true ).parse( '       ' )
@@ -41,7 +41,7 @@ class TestFieldTypes < MiniTest::Test
   def test_date_types
 
     compare = Date.new( 2019, 8, 16 )
-    field = NrCifParser::Record::FieldTypes::Date
+    field = NrCifParser::FieldTypes::Date
 
     assert_equal compare, field.new.parse( '190816' )
 
@@ -54,7 +54,7 @@ class TestFieldTypes < MiniTest::Test
 
   def test_time_types
 
-    field = NrCifParser::Record::FieldTypes::Time
+    field = NrCifParser::FieldTypes::Time
 
     assert_equal '12:00:00', field.new.parse( '1200' )
     assert_equal '12:00:30', field.new( true ).parse( '1200H' )
@@ -72,7 +72,7 @@ class TestFieldTypes < MiniTest::Test
 
   def test_bit_types
 
-    field = NrCifParser::Record::FieldTypes::Bit
+    field = NrCifParser::FieldTypes::Bit
 
     assert_equal 1,  field.new( 4 ).parse( '0001' ), '1'
     assert_equal 8,  field.new( 4 ).parse( '1000' ), '8'
@@ -86,7 +86,7 @@ class TestFieldTypes < MiniTest::Test
 
   def test_enum_types
 
-    field = NrCifParser::Record::FieldTypes::Enum
+    field = NrCifParser::FieldTypes::Enum
 
     assert_equal 'A', field.new( %w{ A B C } ).parse( 'A' ), 'Exact match'
     assert_equal 'A', field.new( %w{ A B C } ).parse( 'A  ' ), 'Trailing space'
@@ -109,7 +109,7 @@ class TestFieldTypes < MiniTest::Test
 
   def test_number_types
 
-    field = NrCifParser::Record::FieldTypes::Number
+    field = NrCifParser::FieldTypes::Number
 
     assert_equal 1,   field.new( 1 ).parse( '1' ), '1'
     assert_equal 100, field.new( 3 ).parse( '100' ), '100'
@@ -128,7 +128,7 @@ class TestFieldTypes < MiniTest::Test
 
   def test_allowance_type
 
-    field = NrCifParser::Record::FieldTypes::Allowance
+    field = NrCifParser::FieldTypes::Allowance
 
     assert_equal 5,   field.new.parse( '5' ), '5'
     assert_equal 5.5, field.new.parse( '5H' ), '5.5'
@@ -144,7 +144,7 @@ class TestFieldTypes < MiniTest::Test
 
   def test_activity_type
 
-    field = NrCifParser::Record::FieldTypes::Activity
+    field = NrCifParser::FieldTypes::Activity
 
     assert_equal [], field.new.parse( '' ), 'Empty string'
     assert_equal [], field.new.parse( '  ' ), 'White space'

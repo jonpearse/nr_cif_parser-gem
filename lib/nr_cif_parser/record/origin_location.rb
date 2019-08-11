@@ -12,16 +12,16 @@ module NrCifParser::Record
 
     def self.definition
       {
-        location:         FieldTypes::String.new( 7 ),
-        location_suffix:  FieldTypes::Char.new( true ),
-        schedule_depart:  FieldTypes::Time.new( true ),
-        public_depart:    FieldTypes::Time.new,
-        platform:         FieldTypes::String.new( 3, true ),
-        line:             FieldTypes::String.new( 3, true ),
-        eng_allowance:    FieldTypes::Allowance.new,
-        path_allowance:   FieldTypes::Allowance.new,
-        activity:         FieldTypes::Activity.new( 'TB' ),
-        perf_allowance:   FieldTypes::Allowance.new
+        location:         FT::String.new( 7 ),
+        location_suffix:  FT::Char.new( true ),
+        schedule_depart:  FT::Time.new( true ),
+        public_depart:    FT::Time.new,
+        platform:         FT::String.new( 3, true ),
+        line:             FT::String.new( 3, true ),
+        eng_allowance:    FT::Allowance.new,
+        path_allowance:   FT::Allowance.new,
+        activity:         FT::Activity.new( 'TB' ),
+        perf_allowance:   FT::Allowance.new
       }
     end
 

@@ -12,7 +12,7 @@ module NrCifParser::Record
 
     def self.definition
       {
-        tiploc: FieldTypes::String.new( 7 )
+        tiploc: FT::String.new( 7 )
       }
     end
 
