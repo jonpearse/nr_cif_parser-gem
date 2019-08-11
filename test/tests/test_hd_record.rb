@@ -1,40 +1,22 @@
 require 'test_helper'
 
-class TestHDRecord < Minitest::Test
+class TestHDRecord < BaseRecordTest
 
   # SETUP
 
-  def arb_parse( msg )
+  def class_under_test
 
-    NrCifParser::Record::Header.parse( msg )
-
-  end
-
-  def record
-
-    arb_parse( 'HDTPS.ABCDEF1.PD1908090908191947XYZ123A       FA090819080820' )
+    NrCifParser::Record::Header
 
   end
 
-  def should_fail( raw, msg = nil )
+  def example_message
 
-    assert_raises( NrCifParser::RecordParserError, msg ) do
-
-      arb_parse( raw )
-
-    end
+    'HDTPS.ABCDEF1.PD1908090908191947XYZ123A       FA090819080820'
 
   end
-
 
   # ACTUAL TESTS
-
-  def test_invalid_message
-
-    should_fail 'XX THIS SHOULD FAIL'
-    should_fail 'HDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-
-  end
 
   def file_mainframe_id
 

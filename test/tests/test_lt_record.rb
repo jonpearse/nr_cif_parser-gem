@@ -1,40 +1,22 @@
 require 'test_helper'
 
-class TestLtRecord < Minitest::Test
+class TestLtRecord < BaseRecordTest
 
   # SETUP
 
-  def arb_parse( msg )
+  def class_under_test
 
-    NrCifParser::Record::TerminatingLocation.parse( msg )
-
-  end
-
-  def record
-
-    arb_parse( 'LTFALKRKG 1734 17341     TF         ' )
+    NrCifParser::Record::TerminatingLocation
 
   end
 
-  def should_fail( raw, msg = nil )
+  def example_message
 
-    assert_raises( NrCifParser::RecordParserError, msg ) do
-
-      arb_parse( raw )
-
-    end
+    'LTFALKRKG 1734 17341     TF         '
 
   end
 
-
-  # ACTUAL TESTS
-
-  def test_invalid_message
-
-    should_fail 'XX THIS SHOULD FAIL'
-    should_fail 'LTXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-
-  end
+  # TESTS
 
   def test_location
 

@@ -1,40 +1,22 @@
 require 'test_helper'
 
-class TestCRRecord < Minitest::Test
+class TestCRRecord < BaseRecordTest
 
   # SETUP
 
-  def arb_parse( msg )
+  def class_under_test
 
-    NrCifParser::Record::ChangesEnRoute.parse( msg )
-
-  end
-
-  def record
-
-    arb_parse( 'CRLENZIE  OO2N75    123578903 DMUE   090      S                    ' )
+    NrCifParser::Record::ChangesEnRoute
 
   end
 
-  def should_fail( raw, msg = nil )
+  def example_message
 
-    assert_raises( NrCifParser::RecordParserError, msg ) do
-
-      arb_parse( raw )
-
-    end
+    'CRLENZIE  OO2N75    123578903 DMUE   090      S                    '
 
   end
 
-
-  # ACTUAL TESTS
-
-  def test_invalid_message
-
-    should_fail 'XX THIS SHOULD FAIL'
-    should_fail 'CRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-
-  end
+  # TESTS
 
   def test_location
 

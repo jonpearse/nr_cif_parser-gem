@@ -1,40 +1,22 @@
 require 'test_helper'
 
-class TestTDRecord < Minitest::Test
+class TestTDRecord < BaseRecordTest
 
   # SETUP
 
-  def arb_parse( msg )
+  def class_under_test
 
-    NrCifParser::Record::TiplocDelete.parse( msg )
-
-  end
-
-  def record
-
-    arb_parse( 'TDABGLELE' )
+    NrCifParser::Record::TiplocDelete
 
   end
 
-  def should_fail( raw, msg = nil )
+  def example_message
 
-    assert_raises( NrCifParser::RecordParserError, msg ) do
-
-      arb_parse( raw )
-
-    end
+    'TDABGLELE'
 
   end
-
 
   # ACTUAL TESTS
-
-  def test_invalid_message
-
-    should_fail 'XX THIS SHOULD FAIL'
-    should_fail 'TDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-
-  end
 
   def test_tiploc
 

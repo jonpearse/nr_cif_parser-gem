@@ -1,38 +1,18 @@
 require 'test_helper'
 
-class TestZZRecord < Minitest::Test
+class TestZZRecord < BaseRecordTest
 
   # SETUP
 
-  def arb_parse( msg )
+  def class_under_test
 
-    NrCifParser::Record::Trailer.parse( msg )
-
-  end
-
-  def record
-
-    arb_parse( 'ZZ' )
+    NrCifParser::Record::Trailer
 
   end
 
-  def should_fail( raw, msg = nil )
+  def example_message
 
-    assert_raises( NrCifParser::RecordParserError, msg ) do
-
-      arb_parse( raw )
-
-    end
-
-  end
-
-
-  # ACTUAL TESTS
-
-  def test_invalid_message
-
-    should_fail 'XX THIS SHOULD FAIL'
-    should_fail 'ZZXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    'ZZ'
 
   end
 

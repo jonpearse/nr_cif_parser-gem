@@ -1,6 +1,8 @@
 require 'test_helper'
 
-class TestAARecord < Minitest::Test
+class TestAARecord < BaseRecordTest
+
+  # SETUP
 
   ACTIVE_DAYS = {
     monday: false,
@@ -12,39 +14,19 @@ class TestAARecord < Minitest::Test
     sunday: true
   }
 
-  # SETUP
+  def class_under_test
 
-  def arb_parse( msg )
-
-    NrCifParser::Record::Association.parse( msg )
+    NrCifParser::Record::Association
 
   end
 
-  def record
+  def example_message
 
-    arb_parse( 'AANC03858Y030391905191909080000001NPSNWCSTLE  TO                               P' )
-
-  end
-
-  def should_fail( raw, msg = nil )
-
-    assert_raises( NrCifParser::RecordParserError, msg ) do
-
-      arb_parse( raw )
-
-    end
+    'AANC03858Y030391905191909080000001NPSNWCSTLE  TO                               P'
 
   end
 
-
-  # ACTUAL TESTS
-
-  def test_invalid_message
-
-    should_fail 'XX THIS SHOULD FAIL'
-    should_fail 'AAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-
-  end
+  # TESTS
 
   def test_transaction_type
 

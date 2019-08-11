@@ -1,40 +1,22 @@
 require 'test_helper'
 
-class TestTIRecord < Minitest::Test
+class TestTIRecord < BaseRecordTest
 
   # SETUP
 
-  def arb_parse( msg )
+  def class_under_test
 
-    NrCifParser::Record::TiplocInsert.parse( msg )
-
-  end
-
-  def record
-
-    arb_parse( 'TIABGLELE00244800AABERGELE & PENSARN        40073   0AGLABERGELE & PENSN' )
+    NrCifParser::Record::TiplocInsert
 
   end
 
-  def should_fail( raw, msg = nil )
+  def example_message
 
-    assert_raises( NrCifParser::RecordParserError, msg ) do
-
-      arb_parse( raw )
-
-    end
+    'TIABGLELE00244800AABERGELE & PENSARN        40073   0AGLABERGELE & PENSN'
 
   end
-
 
   # ACTUAL TESTS
-
-  def test_invalid_message
-
-    should_fail 'XX THIS SHOULD FAIL'
-    should_fail 'TIXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-
-  end
 
   def test_tiploc
 
