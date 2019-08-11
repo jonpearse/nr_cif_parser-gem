@@ -24,6 +24,7 @@ require 'nr_cif_parser/record/mixins/running_days'
 # Different record types
 require 'nr_cif_parser/record/header'
 require 'nr_cif_parser/record/basic_schedule'
+require 'nr_cif_parser/record/basic_schedule_extra_details'
 require 'nr_cif_parser/record/origin_location'
 require 'nr_cif_parser/record/intermediate_location'
 require 'nr_cif_parser/record/changes_en_route'
