@@ -16,11 +16,11 @@ class TestLoRecord < Minitest::Test
 
   end
 
-  def should_fail( msg )
+  def should_fail( raw, msg = nil )
 
-    assert_raises( NrCifParser::RecordParserError ) do
+    assert_raises( NrCifParser::RecordParserError, msg ) do
 
-      arb_parse( msg )
+      arb_parse( raw )
 
     end
 
@@ -100,13 +100,11 @@ class TestLoRecord < Minitest::Test
 
   def test_activity
 
-    skip
-
     assert_equal [ 'TB' ], record.activity
-    assert_equal [ 'TB', 'X' ], arb_parse( 'LOGLGQHL  1703 17033  UEG    TBX                                                ' ).activity
+    assert_equal [ 'TB', 'X', 'KF' ], arb_parse( 'LOGLGQHL  1703 17033  UEG    TBX KF            ' ).activity
 
-    should_fail 'LOGLGQHL  1703 17033  UEG                                                       ', 'Missing TF activity'
-    should_fail 'LOGLGQHL  1703 17033  UEG    ZZ                                                 ', 'False ZZ activity'
+    should_fail 'LOGLGQHL  1703 17033  UEG                  ', 'Missing TB activity'
+    should_fail 'LOGLGQHL  1703 17033  UEG    TBZZ          ', 'False ZZ activity'
 
   end
 

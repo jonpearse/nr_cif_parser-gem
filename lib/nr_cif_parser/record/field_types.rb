@@ -221,7 +221,17 @@ module NrCifParser::Record::FieldTypes
 
     def parse( value )
 
-      value.strip
+      # split out into tokens
+      value = value.chars.each_slice( 2 ).map{ |v| v.join.strip }.reject{ |v| v.empty? }
+
+      # now, ensure we don’t have any errant values
+      value.each{ |v| raise NrCifParser::RecordParserError, "Unknown activity #{v}" unless TYPES.include?( v ) }
+
+      # finally, complain if we don’t have something we need
+      raise NrCifParser::RecordParserError, "Missing required #{@required}" unless @required.nil? or value.include?( @required )
+
+      # return
+      value
 
     end
 
