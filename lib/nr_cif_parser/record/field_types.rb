@@ -90,6 +90,8 @@ module NrCifParser::Record::FieldTypes
 
     def parse( value )
 
+      value.strip!
+
       # handle empty values
       if value.empty? && @nullable
 
