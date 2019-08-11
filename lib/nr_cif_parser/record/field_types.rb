@@ -99,6 +99,10 @@ module NrCifParser::Record::FieldTypes
 
         raise NrCifParser::RecordParserError, "Cannot have empty time field"
 
+      elsif !value.strip.match?( /\A\d{4}H?\Z/ )
+
+        raise NrCifParser::RecordParserError, "Invalid time #{value}"
+
       end
 
       # otherwise…
