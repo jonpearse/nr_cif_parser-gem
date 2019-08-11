@@ -38,6 +38,9 @@ module NrCifParser::Record::FieldTypes
 
     def parse( value )
 
+      # empty?
+      raise NrCifParser::RecordParserError, "Can’t be blank" if value.strip.empty? and !@nullable
+
       # match!
       raise NrCifParser::RecordParserError, "Invalid #{value}" unless @match.nil? or value.match?( @match )
 
@@ -126,6 +129,8 @@ module NrCifParser::Record::FieldTypes
     end
 
     def parse( value )
+
+      raise NrCifParser::RecordParserError, "Invalid bit value #{value}" unless value.match( /\A[01]+\Z/) or value.empty?
 
       ( value.empty? ? 0 : value.to_i( 2 ))
 
