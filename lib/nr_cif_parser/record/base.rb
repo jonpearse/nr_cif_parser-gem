@@ -1,5 +1,3 @@
-require 'date'
-
 module NrCifParser::Record
   
   class Base
@@ -16,18 +14,28 @@ module NrCifParser::Record
       # does the input look right—is the code correct?
       parsed_code = data.slice!( 0, 2 )
       unless parsed_code == self.code
+        
         raise NrCifParser::RecordParserError, "Trying to parse a message of type #{parsed_code} with #{self.class.to_s}" 
-        return nil
+
       end
       
       # start parsing things based on the internal definition
       fields = {}
-      self.definition.each_pair do |key, definition|
+      self.definition.each_pair do |key, field_type|
         
-        value = data.slice!( 0, get_length_from_definition( definition ))
-        value = process_value( value, definition )
-        
-        fields[key] = value unless definition.match?( /unused/ )
+        # chop
+        value = data.slice!( 0, field_type.length )
+      
+        # push back
+        begin
+          
+          fields[key] = field_type.parse( value ) unless field_type.class == NrCifParser::Record::FieldTypes::Unused
+          
+        rescue NrCifParser::RecordParserError => e
+          
+          raise NrCifParser::RecordParserError, "#{e.to_s} for #{self.code}/#{key}"
+          
+        end
         
       end
       

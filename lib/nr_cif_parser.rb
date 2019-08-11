@@ -15,7 +15,10 @@ module NrCifParser
 end
 
 require 'nr_cif_parser/parser'
+
+# record stuff
 require 'nr_cif_parser/record/base'
+require 'nr_cif_parser/record/field_types'
 require 'nr_cif_parser/record/mixins/running_days'
 
 # Different record types
