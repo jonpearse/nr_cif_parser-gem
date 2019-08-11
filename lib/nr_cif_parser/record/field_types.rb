@@ -24,6 +24,12 @@ module NrCifParser::Record::FieldTypes
 
     end
 
+    def nullable?
+
+      @nullable
+
+    end
+
   end
 
   class String < Base
@@ -104,7 +110,7 @@ module NrCifParser::Record::FieldTypes
 
         raise NrCifParser::RecordParserError, "Cannot have empty time field"
 
-      elsif !value.strip.match?( /\A\d{4}H?\Z/ )
+      elsif !value.strip.match?( /\A([0-1][0-9]|2[0-3])([0-5][0-9])H?\Z/ )
 
         raise NrCifParser::RecordParserError, "Invalid time #{value}"
 
@@ -130,7 +136,9 @@ module NrCifParser::Record::FieldTypes
 
     def parse( value )
 
-      raise NrCifParser::RecordParserError, "Invalid bit value #{value}" unless value.match( /\A[01]+\Z/) or value.empty?
+      value.strip!
+
+      raise NrCifParser::RecordParserError, "Invalid bit value #{value}" unless value.match( /\A[01]+\Z/) and !value.empty?
 
       ( value.empty? ? 0 : value.to_i( 2 ))
 
@@ -173,17 +181,24 @@ module NrCifParser::Record::FieldTypes
 
   class Number < Base
 
+    def initialize( length, nullable = false, required = false )
+
+      @required = required
+
+      super( length, nullable )
+
+    end
+
     def parse( value )
 
-      # if it’s empty…
-      return ( @nullable ? nil : 0 ) if value.strip.empty?
+      value.strip!
 
-      # sanity-check
-      if value.match?( /[A-Z]/ )
+      # if it’s empty + we’re not required
+      return ( nullable? ? nil : 0 ) if value.empty? and !@required
 
-        raise NrCifParser::RecordParserError, "Must be numeric"
-
-      end
+      # check format
+      raise NrCifParser::RecordParserError, "Empty field" if value.empty?
+      raise NrCifParser::RecordParserError, "Must be numeric" if value.match?( /\D/ )
 
       value.to_i
 
