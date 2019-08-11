@@ -24,17 +24,9 @@ module NrCifParser::Record::Mixins
 
     module ClassMethods
 
-      @@runningDaysFieldName ||= nil
-
       def hook_running_days( field )
 
-        @@runningDaysFieldName = field
-
-      end
-
-      def getFieldName
-
-        @@runningDaysFieldName
+        send( :define_method, :getFieldName ){ field }
 
       end
 
@@ -56,10 +48,8 @@ module NrCifParser::Record::Mixins
 
       def runs_on_day( day_index )
 
-
-
         bit_val = 2 ** ( 6 - day_index )
-        ( @values[self.class.getFieldName] & bit_val ) == bit_val
+        ( @values[getFieldName] & bit_val ) == bit_val
 
       end
 
