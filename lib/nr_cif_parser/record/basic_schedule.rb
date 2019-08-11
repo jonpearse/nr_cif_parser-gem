@@ -1,18 +1,18 @@
 module NrCifParser::Record
-  
+
   class BasicSchedule < Base
     include Mixins::RunningDays
-    
+
     hook_running_days( :days_run )
-    
+
     protected
-    
+
     def self.code
-      
+
       'BS'
-      
+
     end
-      
+
     def self.definition
       {
         type:           FieldTypes::Enum.new( %w{ N D R } ),
@@ -42,10 +42,9 @@ module NrCifParser::Record
         stp_indicator:  FieldTypes::Enum.new( %w{ C N O P })
       }
     end
-    
+
   end
-  
+
 end
 
 NrCifParser::register_record_type( NrCifParser::Record::BasicSchedule )
-
