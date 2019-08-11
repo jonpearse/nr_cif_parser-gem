@@ -23,3 +23,4 @@ require 'nr_cif_parser/record/mixins/running_days'
 
 # Different record types
 require 'nr_cif_parser/record/basic_schedule'
+require 'nr_cif_parser/record/origin_location'

@@ -184,6 +184,49 @@ module NrCifParser::Record::FieldTypes
 
   end
 
+  class Allowance < Base
+
+    def initialize
+
+      super( 2, false )
+
+    end
+
+    def parse( value )
+
+      # if we’ve nothing…
+      return 0 if value.strip.empty?
+
+      # do some validation
+      raise NrCifParser::RecordParserError, "Invalid allowance #{value}" unless value.strip.match?( /\A\d[H\d]?\Z/ )
+
+      # be lazy
+      value.gsub( 'H', '.5' ).to_f
+
+    end
+
+  end
+
+  class Activity < Base
+
+    TYPES = %w{ A AE AX BL C D -D E G H HH K KC KE KF KS L N OP OR PR R PM RR S T -T TB TF TS TW U -U W X }
+
+    def initialize( required = nil )
+
+      @required = required
+
+      super( 12 )
+
+    end
+
+    def parse( value )
+
+      value.strip
+
+    end
+
+  end
+
   class Unused < Base; end
 
 end
