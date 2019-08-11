@@ -34,7 +34,7 @@ class TestLoRecord < BaseRecordTest
 
     assert_equal '17:03:00', record.schedule_depart
 
-    assert_equal '17:03:30', arb_parse( 'LOGLGQHL  1703H17033  UEG    TB                                                 ' ).schedule_depart
+    assert_equal '17:03:30', parse( 'LOGLGQHL  1703H17033  UEG    TB                                                 ' ).schedule_depart
     should_fail 'LOGLGQHL  1703X17033  UEG    TB                                                 '
 
   end
@@ -62,8 +62,8 @@ class TestLoRecord < BaseRecordTest
 
     assert_equal 0, record.eng_allowance
 
-    assert_equal 30, arb_parse( 'LOGLGQHL  1703 17033  UEG30  TB                                                 ' ).eng_allowance
-    assert_equal 9.5, arb_parse( 'LOGLGQHL  1703 17033  UEG9H  TB                                                 ' ).eng_allowance
+    assert_equal 30, parse( 'LOGLGQHL  1703 17033  UEG30  TB                                                 ' ).eng_allowance
+    assert_equal 9.5, parse( 'LOGLGQHL  1703 17033  UEG9H  TB                                                 ' ).eng_allowance
     should_fail 'LOGLGQHL  1703 17033  UEG9X  TB                                                 '
     should_fail 'LOGLGQHL  1703 17033  UEGX   TB                                                 '
 
@@ -73,8 +73,8 @@ class TestLoRecord < BaseRecordTest
 
     assert_equal 0, record.path_allowance
 
-    assert_equal 30, arb_parse( 'LOGLGQHL  1703 17033  UEG  30TB                                                 ' ).path_allowance
-    assert_equal 9.5, arb_parse( 'LOGLGQHL  1703 17033  UEG  9HTB                                                 ' ).path_allowance
+    assert_equal 30, parse( 'LOGLGQHL  1703 17033  UEG  30TB                                                 ' ).path_allowance
+    assert_equal 9.5, parse( 'LOGLGQHL  1703 17033  UEG  9HTB                                                 ' ).path_allowance
     should_fail 'LOGLGQHL  1703 17033  UEG  9XTB                                                 '
     should_fail 'LOGLGQHL  1703 17033  UEG  X TB                                                 '
 
@@ -83,7 +83,7 @@ class TestLoRecord < BaseRecordTest
   def test_activity
 
     assert_equal [ 'TB' ], record.activity
-    assert_equal [ 'TB', 'X', 'KF' ], arb_parse( 'LOGLGQHL  1703 17033  UEG    TBX KF            ' ).activity
+    assert_equal [ 'TB', 'X', 'KF' ], parse( 'LOGLGQHL  1703 17033  UEG    TBX KF            ' ).activity
 
     should_fail 'LOGLGQHL  1703 17033  UEG                  ', 'Missing TB activity'
     should_fail 'LOGLGQHL  1703 17033  UEG    TBZZ          ', 'False ZZ activity'
@@ -94,8 +94,8 @@ class TestLoRecord < BaseRecordTest
 
     assert_equal 0, record.perf_allowance
 
-    assert_equal 30,  arb_parse( 'LOGLGQHL  1703 17033  UEG    TB          30' ).perf_allowance
-    assert_equal 9.5, arb_parse( 'LOGLGQHL  1703 17033  UEG  9HTB          9H' ).perf_allowance
+    assert_equal 30,  parse( 'LOGLGQHL  1703 17033  UEG    TB          30' ).perf_allowance
+    assert_equal 9.5, parse( 'LOGLGQHL  1703 17033  UEG  9HTB          9H' ).perf_allowance
     should_fail 'LOGLGQHL  1703 17033  UEG    TB          9X'
     should_fail 'LOGLGQHL  1703 17033  UEG    TB          X '
 

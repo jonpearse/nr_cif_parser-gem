@@ -65,7 +65,7 @@ class TestBSRecord < BaseRecordTest
   def test_bank_holiday
 
     assert_nil record.bank_holiday
-    assert_equal "X", arb_parse( 'BSRG828851510191510231100100XPOO2N75    113575825 DMUE   090      S            O' ).bank_holiday
+    assert_equal "X", parse( 'BSRG828851510191510231100100XPOO2N75    113575825 DMUE   090      S            O' ).bank_holiday
     should_fail 'BSRG828851510191510231100100QPOO2N75    113575825 DMUE   090      S            O'
 
   end
@@ -110,7 +110,7 @@ class TestBSRecord < BaseRecordTest
   def test_portion_id
 
     assert_nil record.portion_id
-    assert_equal 'Z', arb_parse( 'BSNG828851510191510231100100 POO2N75    113575825ZDMUE   090      S            O' ).portion_id
+    assert_equal 'Z', parse( 'BSNG828851510191510231100100 POO2N75    113575825ZDMUE   090      S            O' ).portion_id
     should_fail 'BSRG828851510191510231100100 POO2N75    11X5758255DMUE   090      S            O'
     should_fail 'BSRG828851510191510231100100 POO2N75    11X575825XDMUE   090      S            O'
 
@@ -119,7 +119,7 @@ class TestBSRecord < BaseRecordTest
   def test_power_type
 
     assert_equal 'DMU', record.power_type
-    assert_equal 'ED', arb_parse( 'BSNG828851510191510231100100 POO2N75    113575825ZED E   090      S            O' ).power_type
+    assert_equal 'ED', parse( 'BSNG828851510191510231100100 POO2N75    113575825ZED E   090      S            O' ).power_type
     should_fail 'BSRG828851510191510231100100 POO2N75    11X575825XXX E   090      S            O'
 
   end
@@ -128,8 +128,8 @@ class TestBSRecord < BaseRecordTest
 
     assert_equal 'E', record.timing_load
 
-    assert_equal '1234', arb_parse( 'BSRG828851510191510231100100 POO2N75    113575825 DMU1234090      S            O' ).timing_load
-    assert_equal 'D3',  arb_parse( 'BSRG828851510191510231100100 POO2N75    113575825 DMUD3  090      S            O' ).timing_load
+    assert_equal '1234', parse( 'BSRG828851510191510231100100 POO2N75    113575825 DMU1234090      S            O' ).timing_load
+    assert_equal 'D3',  parse( 'BSRG828851510191510231100100 POO2N75    113575825 DMUD3  090      S            O' ).timing_load
     should_fail 'BSRG828851510191510231100100 POO2N75    113575825 DMUF   090      S            O'
     should_fail 'BSRG828851510191510231100100 POO2N75    113575825 DMUFX  090      S            O'
     should_fail 'BSRG828851510191510231100100 POO2N75    113575825 DMUE0  090      S            O'
@@ -146,7 +146,7 @@ class TestBSRecord < BaseRecordTest
 
     assert_nil record.op_character
 
-    assert_equal "BEG", arb_parse( 'BSRG828851510191510231100100 POO2N75    113575825 DMUD3  090BEG   S            O' ).op_character
+    assert_equal "BEG", parse( 'BSRG828851510191510231100100 POO2N75    113575825 DMUD3  090BEG   S            O' ).op_character
     should_fail 'BSRG828851510191510231100100 POO2N75    113575825 DMUE   090XXXXXSS            O'
 
   end
@@ -155,7 +155,7 @@ class TestBSRecord < BaseRecordTest
 
     assert_equal "S", record.seating_class
 
-    assert_nil arb_parse( 'BSRG828851510191510231100100 POO2N75    113575825 DMUE   090                   O' ).seating_class
+    assert_nil parse( 'BSRG828851510191510231100100 POO2N75    113575825 DMUE   090                   O' ).seating_class
     should_fail 'BSRG828851510191510231100100 POO2N75    113575825 DMUE   090      X            O'
 
   end
@@ -164,7 +164,7 @@ class TestBSRecord < BaseRecordTest
 
     assert_nil record.sleepers
 
-    assert_equal 'B', arb_parse( 'BSRG828851510191510231100100 POO2N75    113575825 DMUE   090      SB           O' ).sleepers
+    assert_equal 'B', parse( 'BSRG828851510191510231100100 POO2N75    113575825 DMUE   090      SB           O' ).sleepers
     should_fail 'BSRG828851510191510231100100 POO2N75    113575825 DMUE   090      SX           O'
 
   end
@@ -173,7 +173,7 @@ class TestBSRecord < BaseRecordTest
 
     assert_nil record.reservations
 
-    assert_equal 'A', arb_parse( 'BSRG828851510191510231100100 POO2N75    113575825 DMUE   090      S A          O' ).reservations
+    assert_equal 'A', parse( 'BSRG828851510191510231100100 POO2N75    113575825 DMUE   090      S A          O' ).reservations
     should_fail 'BSRG828851510191510231100100 POO2N75    113575825 DMUE   090      S X          O'
 
   end
@@ -182,8 +182,8 @@ class TestBSRecord < BaseRecordTest
 
     assert_nil record.catering_code
 
-    assert_equal 'C', arb_parse( 'BSRG828851510191510231100100 POO2N75    113575825 DMUE   090      S   C        O' ).catering_code
-    assert_equal 'TF', arb_parse( 'BSRG828851510191510231100100 POO2N75    113575825 DMUE   090      S   TF       O' ).catering_code
+    assert_equal 'C', parse( 'BSRG828851510191510231100100 POO2N75    113575825 DMUE   090      S   C        O' ).catering_code
+    assert_equal 'TF', parse( 'BSRG828851510191510231100100 POO2N75    113575825 DMUE   090      S   TF       O' ).catering_code
     should_fail 'BSRG828851510191510231100100 POO2N75    113575825 DMUE   090      S   X        O'
     should_fail 'BSRG828851510191510231100100 POO2N75    113575825 DMUE   090      S   XX       O'
 
@@ -193,7 +193,7 @@ class TestBSRecord < BaseRecordTest
 
     assert_nil record.service_brand
 
-    assert_equal 'E', arb_parse( 'BSRG828851510191510231100100 POO2N75    113575825 DMUE   090      S       E    O' ).service_brand
+    assert_equal 'E', parse( 'BSRG828851510191510231100100 POO2N75    113575825 DMUE   090      S       E    O' ).service_brand
     should_fail 'BSRG828851510191510231100100 POO2N75    113575825 DMUE   090      S       EX   O'
     should_fail 'BSRG828851510191510231100100 POO2N75    113575825 DMUE   090      S       X  X O'
 
@@ -203,7 +203,7 @@ class TestBSRecord < BaseRecordTest
 
     assert_equal "O", record.stp_indicator
 
-    assert_equal 'C', arb_parse( 'BSRG828851510191510231100100 POO2N75    113575825 DMUE   090      S            C' ).stp_indicator
+    assert_equal 'C', parse( 'BSRG828851510191510231100100 POO2N75    113575825 DMUE   090      S            C' ).stp_indicator
     should_fail 'BSRG828851510191510231100100 POO2N75    113575825 DMUE   090      S            X'
     should_fail 'BSRG828851510191510231100100 POO2N75    113575825 DMUE   090      S             '
 

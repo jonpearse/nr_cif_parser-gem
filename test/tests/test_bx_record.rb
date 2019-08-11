@@ -22,7 +22,7 @@ class TestBXRecord < BaseRecordTest
 
     assert_nil record.uic_code
 
-    assert_equal 12345, arb_parse( 'BX    12345SRY' ).uic_code
+    assert_equal 12345, parse( 'BX    12345SRY' ).uic_code
 
   end
 
@@ -38,7 +38,7 @@ class TestBXRecord < BaseRecordTest
 
     assert_equal 'Y', record.applicable_tt_code
 
-    assert_equal 'N', arb_parse( 'BX         SRN' ).applicable_tt_code
+    assert_equal 'N', parse( 'BX         SRN' ).applicable_tt_code
     should_fail 'BX         SRX', 'Invalid TT code'
     should_fail 'BX         SR ', 'Blank TT code'
 

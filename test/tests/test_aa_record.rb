@@ -31,7 +31,7 @@ class TestAARecord < BaseRecordTest
   def test_transaction_type
 
     assert_equal 'N', record.type
-    assert_equal 'R', arb_parse( 'AARC03858Y030391905191909080000001NPSNWCSTLE  TO                               P' ).type
+    assert_equal 'R', parse( 'AARC03858Y030391905191909080000001NPSNWCSTLE  TO                               P' ).type
     should_fail 'AAXC03858Y030391905191909080000001NPSNWCSTLE  TO                               P'
 
   end
@@ -88,8 +88,8 @@ class TestAARecord < BaseRecordTest
 
     assert_equal 'NP', record.category
 
-    assert_equal 'VV', arb_parse( 'AANC03858Y030391905191909080000001VVSNWCSTLE  TO                               P' ).category
-    assert_equal 'JJ', arb_parse( 'AANC03858Y030391905191909080000001JJSNWCSTLE  TO                               P' ).category
+    assert_equal 'VV', parse( 'AANC03858Y030391905191909080000001VVSNWCSTLE  TO                               P' ).category
+    assert_equal 'JJ', parse( 'AANC03858Y030391905191909080000001JJSNWCSTLE  TO                               P' ).category
     should_fail 'AANC03858Y030391905191909080000001XXSNWCSTLE  TO                               P', 'Invalid specification'
 
   end
@@ -98,7 +98,7 @@ class TestAARecord < BaseRecordTest
 
     assert_equal 'S', record.date_ind
 
-    assert_equal 'N', arb_parse( 'AANC03858Y030391905191909080000001NPNNWCSTLE  TO                               P' ).date_ind
+    assert_equal 'N', parse( 'AANC03858Y030391905191909080000001NPNNWCSTLE  TO                               P' ).date_ind
     should_fail 'AANC03858Y030391905191909080000001NPXNWCSTLE  TO                               P', 'Invalid specification'
 
   end
@@ -114,7 +114,7 @@ class TestAARecord < BaseRecordTest
 
     assert_nil record.base_suffix
 
-    assert_equal 4, arb_parse( 'AANC03858Y030391905191909080000001NPSNWCSTLE4 TO                               P' ).base_suffix
+    assert_equal 4, parse( 'AANC03858Y030391905191909080000001NPSNWCSTLE4 TO                               P' ).base_suffix
     should_fail 'AANC03858Y030391905191909080000001NPSNWCSTLEX TO                               P'
 
   end
@@ -123,7 +123,7 @@ class TestAARecord < BaseRecordTest
 
     assert_nil record.assoc_suffix
 
-    assert_equal 4, arb_parse( 'AANC03858Y030391905191909080000001NPSNWCSTLE 4TO                               P' ).assoc_suffix
+    assert_equal 4, parse( 'AANC03858Y030391905191909080000001NPSNWCSTLE 4TO                               P' ).assoc_suffix
     should_fail 'AANC03858Y030391905191909080000001NPSNWCSTLE XTO                               P'
 
   end
@@ -131,8 +131,8 @@ class TestAARecord < BaseRecordTest
   def test_diagram_type
 
     assert_equal 'O', record.association_type
-    assert_equal 'P', arb_parse( 'AANC03858Y030391905191909080000001NPSNWCSTLE  TP                               P' ).association_type
-    assert_nil arb_parse( 'AANC03858Y030391905191909080000001NPSNWCSTLE  T                                P' ).association_type
+    assert_equal 'P', parse( 'AANC03858Y030391905191909080000001NPSNWCSTLE  TP                               P' ).association_type
+    assert_nil parse( 'AANC03858Y030391905191909080000001NPSNWCSTLE  T                                P' ).association_type
     should_fail 'AANC03858Y030391905191909080000001NPSNWCSTLE  TX                               P'
 
   end
@@ -140,10 +140,10 @@ class TestAARecord < BaseRecordTest
   def test_stp_indicator
 
     assert_equal 'P', record.stp_indicator
-    assert_equal ' ', arb_parse( 'AANC03858Y030391905191909080000001NPSNWCSTLE  TO                                ' ).stp_indicator
-    assert_equal 'C', arb_parse( 'AANC03858Y030391905191909080000001NPSNWCSTLE  TO                               C' ).stp_indicator
-    assert_equal 'N', arb_parse( 'AANC03858Y030391905191909080000001NPSNWCSTLE  TO                               N' ).stp_indicator
-    assert_equal 'O', arb_parse( 'AANC03858Y030391905191909080000001NPSNWCSTLE  TO                               O' ).stp_indicator
+    assert_equal ' ', parse( 'AANC03858Y030391905191909080000001NPSNWCSTLE  TO                                ' ).stp_indicator
+    assert_equal 'C', parse( 'AANC03858Y030391905191909080000001NPSNWCSTLE  TO                               C' ).stp_indicator
+    assert_equal 'N', parse( 'AANC03858Y030391905191909080000001NPSNWCSTLE  TO                               N' ).stp_indicator
+    assert_equal 'O', parse( 'AANC03858Y030391905191909080000001NPSNWCSTLE  TO                               O' ).stp_indicator
     should_fail 'AANC03858Y030391905191909080000001NPSNWCSTLE  TO                               X'
 
   end

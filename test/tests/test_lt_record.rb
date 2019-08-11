@@ -28,7 +28,7 @@ class TestLtRecord < BaseRecordTest
 
     assert_equal "17:34:00", record.schedule_arrival
 
-    assert_equal "17:34:30", arb_parse( 'LTFALKRKG 1734H17341     TF         ' ).schedule_arrival
+    assert_equal "17:34:30", parse( 'LTFALKRKG 1734H17341     TF         ' ).schedule_arrival
     should_fail 'LTFALKRKG     17341     TF         '
 
   end
@@ -44,14 +44,14 @@ class TestLtRecord < BaseRecordTest
   def test_platform
 
     assert_equal "1", record.platform
-    assert_nil arb_parse( 'LTFALKRKG 1734 1734      TF         ' ).platform
+    assert_nil parse( 'LTFALKRKG 1734 1734      TF         ' ).platform
 
   end
 
   def test_path
 
     assert_nil record.path
-    assert_equal "UMF", arb_parse( 'LTFALKRKG 1734 1734   UMFTF         ' ).path
+    assert_equal "UMF", parse( 'LTFALKRKG 1734 1734   UMFTF         ' ).path
 
   end
 

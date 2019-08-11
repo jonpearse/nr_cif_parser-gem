@@ -48,7 +48,7 @@ class TestTIRecord < BaseRecordTest
 
     assert_equal 'A', record.nlc_check_num
 
-    assert_nil arb_parse( 'TIABGLELE00244800 ABERGELE & PENSARN        40073   0AGLABERGELE & PENSN' ).nlc_check_num
+    assert_nil parse( 'TIABGLELE00244800 ABERGELE & PENSARN        40073   0AGLABERGELE & PENSN' ).nlc_check_num
 
   end
 
@@ -56,7 +56,7 @@ class TestTIRecord < BaseRecordTest
 
     assert_equal 'ABERGELE & PENSARN', record.tps_description
 
-    assert_nil arb_parse( 'TIABGLELE00244800A                          40073   0AGLABERGELE & PENSN' ).tps_description
+    assert_nil parse( 'TIABGLELE00244800A                          40073   0AGLABERGELE & PENSN' ).tps_description
 
   end
 
@@ -64,7 +64,7 @@ class TestTIRecord < BaseRecordTest
 
     assert_equal 40073, record.stanox
 
-    assert_equal 0, arb_parse( 'TIABGLELE00244800AABERGELE & PENSARN        00000   0AGLABERGELE & PENSN' ).stanox
+    assert_equal 0, parse( 'TIABGLELE00244800AABERGELE & PENSARN        00000   0AGLABERGELE & PENSN' ).stanox
     should_fail 'TIABGLELE00244800AABERGELE & PENSARN                0AGLABERGELE & PENSN'
 
   end
@@ -73,7 +73,7 @@ class TestTIRecord < BaseRecordTest
 
     assert_equal 0, record.po_mcp_code
 
-    assert_equal 1234, arb_parse( 'TIABGLELE00244800AABERGELE & PENSARN        400731234AGLABERGELE & PENSN' ).po_mcp_code
+    assert_equal 1234, parse( 'TIABGLELE00244800AABERGELE & PENSARN        400731234AGLABERGELE & PENSN' ).po_mcp_code
     should_fail 'TIABGLELE00244800AABERGELE & PENSARN        40073    AGLABERGELE & PENSN'
 
   end
@@ -82,7 +82,7 @@ class TestTIRecord < BaseRecordTest
 
     assert_equal 'AGL', record.crs_code
 
-    assert_nil arb_parse( 'TIABGLELE00244800AABERGELE & PENSARN        40073   0   ABERGELE & PENSN' ).crs_code
+    assert_nil parse( 'TIABGLELE00244800AABERGELE & PENSARN        40073   0   ABERGELE & PENSN' ).crs_code
 
   end
 
@@ -90,8 +90,8 @@ class TestTIRecord < BaseRecordTest
 
     assert_equal 'ABERGELE & PENSN', record.description
 
-    assert_equal 'SOME OTHER VALUE', arb_parse( 'TIABGLELE00244800AABERGELE & PENSARN        40073   0AGLSOME OTHER VALUE' ).description
-    assert_nil arb_parse( 'TIABGLELE00244800AABERGELE & PENSARN        40073   0AGL                ' ).description
+    assert_equal 'SOME OTHER VALUE', parse( 'TIABGLELE00244800AABERGELE & PENSARN        40073   0AGLSOME OTHER VALUE' ).description
+    assert_nil parse( 'TIABGLELE00244800AABERGELE & PENSARN        40073   0AGL                ' ).description
 
   end
 

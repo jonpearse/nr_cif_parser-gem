@@ -33,7 +33,7 @@ class BaseRecordTest < Minitest::Test
 
   # For use elsewhere
 
-  def arb_parse( msg )
+  def parse( msg )
 
     class_under_test.parse( msg )
 
@@ -41,7 +41,7 @@ class BaseRecordTest < Minitest::Test
 
   def record
 
-    arb_parse( example_message )
+    parse( example_message )
 
   end
 
@@ -49,7 +49,7 @@ class BaseRecordTest < Minitest::Test
 
     assert_raises( NrCifParser::RecordParserError, msg ) do
 
-      arb_parse( raw )
+      parse( raw )
 
     end
 

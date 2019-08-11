@@ -56,7 +56,7 @@ class TestHDRecord < BaseRecordTest
 
     assert_nil record.last_file_ref
 
-    assert_equal 'ABC123X', arb_parse( 'HDTPS.ABCDEF1.PD1908090908191947XYZ123AABC123XFA090819080820' ).last_file_ref
+    assert_equal 'ABC123X', parse( 'HDTPS.ABCDEF1.PD1908090908191947XYZ123AABC123XFA090819080820' ).last_file_ref
 
   end
 
