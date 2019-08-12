@@ -8,11 +8,8 @@ module NrCifParser::Record
       # sanity-check: strings are max 80 chars long
       raise NrCifParser::RecordParserError, "Record too long (expected max 80 characters)" if raw.length > 80
 
-      # dupe out the data so we can destructively parse it without worrying too much
-      data = raw.dup
-
       # does the input look right—is the code correct?
-      parsed_code = data.slice!( 0, 2 )
+      parsed_code = raw[0, 2]
       unless parsed_code == self.code
 
         raise NrCifParser::RecordParserError, "Trying to parse a message of type #{parsed_code} with #{self.to_s}"
@@ -21,10 +18,12 @@ module NrCifParser::Record
 
       # start parsing things based on the internal definition
       fields = {}
+      offset = 2
       self.definition.each_pair do |key, field_type|
 
         # chop
-        value = data.slice!( 0, field_type.length )
+        value = raw[offset, field_type.length]
+        offset += field_type.length
 
         # push back
         begin
