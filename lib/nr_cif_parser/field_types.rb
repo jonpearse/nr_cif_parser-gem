@@ -233,7 +233,7 @@ module NrCifParser::FieldTypes
 
   class Activity < Base
 
-    TYPES = %w{ A AE AX BL C D -D E G H HH K KC KE KF KS L N OP OR PR R PM RR S T -T TB TF TS TW U -U W X }
+    TYPES = %w{ A AE AX BL C D -D E G H HH K KC KE KF KS L N OP OR PR R RM RR S T -T TB TF TS TW U -U W X }
 
     def initialize( required = nil )
 
