@@ -8,6 +8,12 @@ module NrCifParser
 
   end
 
+  def self.get_record_module_for( code )
+
+    @@module_map.key?( code ) ? @@module_map[ code ] : nil
+
+  end
+
   class RecordParserError < StandardError; end
 
   module FieldTypes; end

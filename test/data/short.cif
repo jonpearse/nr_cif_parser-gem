@@ -1,0 +1,30 @@
+HDTPS.UDFROC1.PD1908090908191947DFROC2B       FA090819080820
+TIABRDFDS00897663EABERDEEN FERRYHILL DN SDGS02083   0
+TIABRDFGL56887016TABERDEEN FERRYHILL G.L.   02084   0
+TIABRDFJN56897662DABERDEEN FERRYHILL JN     02082   0
+TIABRDFUS00887012QABERDEEN FERRYHILL UP SDGS02086   0
+TIABRDNS 00897610JABERDEEN NORTH SIDING     02067   0
+TIABRDSVC08887014YABERDEEN SERVICE CO.      00000   0
+TIABRDWAT00887300DABERDEEN WATERLOO         02061   0
+TIABRDWCR00887320JABERDEEN WATERLOO COLAS   02070   0
+TIABRDWGB00887050DABERDEEN WATERLOO (GBRF)  02062   0
+AANY90885Y923631912212005160000010NPSCARDFBR  TO                               P
+AANY90889Y923671912212005160000010NPSCARDFBR  TO                               P
+AANY90891Y923691912212005160000010NPSCARDFBR  TO                               P
+AANY90895Y923731912212005160000010NPSCARDFBR  TO                               P
+BSRG828851510191510231100100 POO2N75    113575825 DMUE   090      S            O
+BX         SRY                                                                  
+LOGLGQHL  1703 17033  UEG    TB                                                 
+LICWLRSSJ           1706 00000000                                               
+LICWLRSWJ           1706H00000000      UEG                                      
+LIBSHB    1709 1710      17091710         T                                     
+CRLENZIE  OO2N75    123578903 DMUE   090      S                                 
+LILENZIE  1714 1714H     17141714         T                                     
+LICROY              1720 000000001                      1H                      
+LIGNHLUJN           1726 00000000                        H                      
+LIGNHLLJN           1727 00000000                                               
+LICRMRSWJ           1729 00000000                                               
+LICRMRSEJ           1730 00000000                                               
+LICAMELON 1731 1732      17311732         T                                     
+LTFALKRKG 1734 17341     TF    
+ZZ
