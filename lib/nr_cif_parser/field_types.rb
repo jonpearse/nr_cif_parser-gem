@@ -222,7 +222,7 @@ module NrCifParser::FieldTypes
       return 0 if value.strip.empty?
 
       # do some validation
-      raise NrCifParser::RecordParserError, "Invalid allowance #{value}" unless value.strip.match?( /\A\d[H\d]?\Z/ )
+      raise NrCifParser::RecordParserError, "Invalid allowance #{value}" unless value.strip.match?( /\A(H|\dH?|\d\d)\Z/ )
 
       # be lazy
       value.gsub( 'H', '.5' ).to_f

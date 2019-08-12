@@ -133,6 +133,8 @@ class TestFieldTypes < MiniTest::Test
     assert_equal 5,   field.new.parse( '5' ), '5'
     assert_equal 5.5, field.new.parse( '5H' ), '5.5'
     assert_equal 94,  field.new.parse( '94' ), '94'
+    assert_equal 0.5, field.new.parse( ' H' ), '30 seconds, leading space'
+    assert_equal 0.5, field.new.parse( 'H ' ), '30 seconds, trailing space'
     assert_equal 0,   field.new.parse( '  ' ), 'Spaces'
     assert_equal 0,   field.new.parse( '' ), 'Empty string'
 
