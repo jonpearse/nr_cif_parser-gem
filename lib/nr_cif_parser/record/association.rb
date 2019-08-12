@@ -23,7 +23,7 @@ module NrCifParser::Record
         date_until:       FT::Date.new,
         days:             FT::Bit.new( 7 ),
         category:         FT::Enum.new( %w{ JJ VV NP }, true ),
-        date_ind:         FT::Enum.new( %w{ S N P } ),
+        date_ind:         FT::Enum.new( %w{ S N P }, true ),
         location:         FT::String.new( 7 ),
         base_suffix:      FT::Number.new( 1, true ),
         assoc_suffix:     FT::Number.new( 1, true ),

@@ -87,10 +87,10 @@ class TestBSRecord < BaseRecordTest
   def test_identity
 
     assert_equal "2N75", record.identity
-    should_fail 'BSRG828851510191510231100100 POO2575    113575825 DMUE   090      S            O'
-    should_fail 'BSRG828851510191510231100100 POOE575    113575825 DMUE   090      S            O'
-    should_fail 'BSRG828851510191510231100100 POO25E5    113575825 DMUE   090      S            O'
-    should_fail 'BSRG828851510191510231100100 POO257E    113575825 DMUE   090      S            O'
+    should_fail 'BSRG828851510191510231100100 POO2575    113575825 DMUE   090      S            O', 'Number instead of letter'
+    should_fail 'BSRG828851510191510231100100 POOE575    113575825 DMUE   090      S            O', 'Initial letter instead of number'
+    should_fail 'BSRG828851510191510231100100 POO25E5    113575825 DMUE   090      S            O', 'Third letter instead of number'
+    should_fail 'BSRG828851510191510231100100 POO257E    113575825 DMUE   090      S            O', 'Fourth letter instead of number'
 
   end
 

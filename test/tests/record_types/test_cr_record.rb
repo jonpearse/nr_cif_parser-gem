@@ -76,6 +76,7 @@ class TestCRRecord < BaseRecordTest
 
     assert_equal '1234', parse( 'CRLENZIE  OO2N75    123578903 DMU1234090      S                ' ).timing_load
     assert_equal 'D3',   parse( 'CRLENZIE  OO2N75    123578903 DMUD3  090      S                ' ).timing_load
+    assert_nil parse( 'CRCTRDJN  DT3Q27    152495112 D      030' ).timing_load
     should_fail 'CRLENZIE  OO2N75    123578903 DMUF   090      S                '
     should_fail 'CRLENZIE  OO2N75    123578903 DMUFX  090      S                '
     should_fail 'CRLENZIE  OO2N75    123578903 DMUE0  090      S                '
