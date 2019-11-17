@@ -11,7 +11,7 @@ module NrCifParser::Record
     end
 
     def self.definition
-      {
+      @@_definition ||= {
         location:         FT::String.new( 7 ),
         location_suffix:  FT::Char.new( true ),
         category:         FT::String.new( 2, true ), # @TODO: expand to ENUM

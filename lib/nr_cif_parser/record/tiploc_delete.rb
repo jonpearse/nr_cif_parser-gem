@@ -11,7 +11,7 @@ module NrCifParser::Record
     end
 
     def self.definition
-      {
+      @@_definition ||= {
         tiploc: FT::String.new( 7 )
       }
     end

@@ -11,7 +11,7 @@ module NrCifParser::Record
     end
 
     def self.definition
-      {
+      @@_definition ||= {
         traction_class:     FT::Unused.new( 4 ),
         uic_code:           FT::Number.new( 5, true ),
         atoc_code:          FT::String.new( 2 ), # @TODO: make this an enum

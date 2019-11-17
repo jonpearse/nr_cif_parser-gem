@@ -14,8 +14,7 @@ module NrCifParser::Record
     end
 
     def self.definition
-
-      {
+      @@_definition ||= {
         type:             FT::Enum.new( %w{ N D R } ),
         main_uid:         FT::String.new( 6, false, /[A-Z]\d{5}/ ),
         associated_uid:   FT::String.new( 6, false, /[A-Z]\d{5}/ ),

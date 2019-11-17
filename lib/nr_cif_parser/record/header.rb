@@ -11,7 +11,7 @@ module NrCifParser::Record
     end
 
     def self.definition
-      {
+      @@_definition ||= {
         file_mainframe_id:  FT::String.new( 20 ),
         date_of_extract:    FT::Date.new( '%d%m%y' ), # just to be awkward 🙄
         time_of_extract:    FT::Time.new,

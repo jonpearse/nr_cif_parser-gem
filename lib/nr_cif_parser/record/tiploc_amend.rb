@@ -11,7 +11,7 @@ module NrCifParser::Record
     end
 
     def self.definition
-      {
+      @@_definition ||= {
         tiploc:           FT::String.new( 7 ),
         capitals_id:      FT::Number.new( 2, false, true ),
         nalco:            FT::Number.new( 6, false, true ),
