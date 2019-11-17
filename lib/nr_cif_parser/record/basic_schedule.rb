@@ -18,8 +18,8 @@ module NrCifParser::Record
         type:           FT::Enum.new( %w{ N D R } ),
         train_uid:      FT::String.new( 6, false, /[A-Z]\d{5}/ ),
         date_from:      FT::Date.new,
-        date_until:     FT::Date.new,
-        days_run:       FT::Bit.new( 7 ),
+        date_until:     FT::Date.new( true ),
+        days_run:       FT::Bit.new( 7, true ),
         bank_holiday:   FT::Enum.new( %w{ E G X }, true ),
         status:         FT::Enum.new( %w{ B F P S T 1 2 3 4 5 }, true ),
         category:       FT::String.new( 2, true ), # @TODO: expand to ENUM

@@ -207,6 +207,17 @@ class TestBSRecord < BaseRecordTest
     should_fail 'BSRG828851510191510231100100 POO2N75    113575825 DMUE   090      S            X'
     should_fail 'BSRG828851510191510231100100 POO2N75    113575825 DMUE   090      S             '
 
+  end
+
+  def test_truncated_date_until
+
+    assert_nil parse( 'BSDC20101191111                                                                C' ).date_until
+
+  end
+
+  def test_truncated_days_run
+
+    assert_nil parse( 'BSDC20101191111                                                                C' ).date_until
 
   end
 

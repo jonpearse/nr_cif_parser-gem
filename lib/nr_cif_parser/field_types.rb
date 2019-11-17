@@ -69,17 +69,19 @@ module NrCifParser::FieldTypes
 
   class Date < Base
 
-    def initialize( parse_format = '%y%m%d' )
+    def initialize( nullable = false, parse_format = '%y%m%d' )
 
       @parse_format = parse_format
 
-      super( 6, false )
+      super( 6, nullable )
 
     end
 
     def parse( value )
 
-      ::Date.strptime( value, @parse_format )
+      value.strip!
+
+      ( @nullable && value.empty? ) ? nil : ::Date.strptime( value, @parse_format )
 
     rescue
 
@@ -130,9 +132,9 @@ module NrCifParser::FieldTypes
 
   class Bit < Base
 
-    def initialize( length )
+    def initialize( length, nullable = false )
 
-      super( length, false )
+      super( length, nullable )
 
     end
 
@@ -140,9 +142,9 @@ module NrCifParser::FieldTypes
 
       value.strip!
 
-      raise NrCifParser::RecordParserError, "Invalid bit value #{value}" unless value.match( /\A[01]+\Z/) and !value.empty?
+      raise NrCifParser::RecordParserError, "Invalid bit value #{value}" unless value.match?( /\A[01]+\Z/) or @nullable
 
-      ( value.empty? ? 0 : value.to_i( 2 ))
+      ( @nullable && value.empty? ) ? nil : value.to_i( 2 )
 
     end
 

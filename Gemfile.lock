@@ -1,0 +1,19 @@
+PATH
+  remote: .
+  specs:
+    nr_cif_parser (1.0.0.pre)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    minitest (5.11.3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  minitest (~> 5.11.3)
+  nr_cif_parser!
+
+BUNDLED WITH
+   2.0.2

@@ -38,7 +38,7 @@ class TestFieldTypes < MiniTest::Test
 
   end
 
-  def test_date_types
+  def test_required_date_types
 
     compare = Date.new( 2019, 8, 16 )
     field = NrCifParser::FieldTypes::Date
@@ -49,6 +49,20 @@ class TestFieldTypes < MiniTest::Test
     should_fail { field.new.parse( '190835' )}
     should_fail { field.new.parse( '' )}
     should_fail { field.new.parse( '   ' )}
+
+  end
+
+  def test_optional_date_types
+
+    compare = Date.new( 2019, 8, 16 )
+    field = NrCifParser::FieldTypes::Date.new( true, '%y%m%d' )
+
+    assert_equal compare, field.parse( '190816' )
+
+    should_fail { field.parse( 'kjqwej' )}
+    should_fail { field.parse( '190835' )}
+    assert_nil field.parse( '' )
+    assert_nil field.parse( '   ' )
 
   end
 
